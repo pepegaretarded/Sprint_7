@@ -1,0 +1,204 @@
+{
+  "uuid": "66251a0a-2daf-4f00-879b-b6cfa5c8e4bf",
+  "historyId": "9eb4b86b4988cdcf6253ad9817ea7ef5",
+  "fullName": "ru.yandex.praktikum.tests.CourierLoginTest.shouldReturnErrorWhenLoginIsMissing",
+  "labels": [
+    {
+      "name": "package",
+      "value": "ru.yandex.praktikum.tests",
+      "labels": []
+    },
+    {
+      "name": "testClass",
+      "value": "ru.yandex.praktikum.tests.CourierLoginTest",
+      "labels": []
+    },
+    {
+      "name": "testMethod",
+      "value": "shouldReturnErrorWhenLoginIsMissing",
+      "labels": []
+    },
+    {
+      "name": "suite",
+      "value": "ru.yandex.praktikum.tests.CourierLoginTest",
+      "labels": []
+    },
+    {
+      "name": "framework",
+      "value": "junit4",
+      "labels": []
+    },
+    {
+      "name": "language",
+      "value": "java",
+      "labels": []
+    }
+  ],
+  "links": [],
+  "name": "shouldReturnErrorWhenLoginIsMissing",
+  "status": "passed",
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "Создать курьера для проверки входа",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [
+        {
+          "name": "Создать курьера",
+          "status": "passed",
+          "stage": "finished",
+          "steps": [],
+          "attachments": [
+            {
+              "name": "Request",
+              "source": "ec393334-47fb-401f-a182-a96351046235-attachment.html",
+              "type": "text/html",
+              "labels": []
+            },
+            {
+              "name": "HTTP/1.1 201 Created",
+              "source": "6d7c4b1a-bff0-4db9-9c2a-1f072ca319f9-attachment.html",
+              "type": "text/html",
+              "labels": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "courier",
+              "value": "{firstName=Алексей, password=[скрыто], login=courier786552cb5b}",
+              "labels": []
+            }
+          ],
+          "start": 1792519720520,
+          "stop": 1792519720797,
+          "labels": []
+        }
+      ],
+      "attachments": [],
+      "parameters": [],
+      "start": 1792519720520,
+      "stop": 1792519720840,
+      "labels": []
+    },
+    {
+      "name": "Вернуть ошибку, если не указан логин",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [
+        {
+          "name": "Войти в систему под курьером",
+          "status": "passed",
+          "stage": "finished",
+          "steps": [],
+          "attachments": [
+            {
+              "name": "Request",
+              "source": "c4c683d3-6933-4617-a449-e98028863f9d-attachment.html",
+              "type": "text/html",
+              "labels": []
+            },
+            {
+              "name": "HTTP/1.1 400 Bad Request",
+              "source": "2169d100-c365-4fea-945c-a78ac723d098-attachment.html",
+              "type": "text/html",
+              "labels": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "credentials",
+              "value": "{firstName=Алексей, password=pass786552cb5b}",
+              "labels": []
+            }
+          ],
+          "start": 1792519720840,
+          "stop": 1792519721192,
+          "labels": []
+        }
+      ],
+      "attachments": [],
+      "parameters": [],
+      "start": 1792519720840,
+      "stop": 1792519721236,
+      "labels": []
+    },
+    {
+      "name": "Удалить тестового курьера",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [
+        {
+          "name": "Удалить курьера, если он был создан",
+          "status": "passed",
+          "stage": "finished",
+          "steps": [
+            {
+              "name": "Войти в систему под курьером",
+              "status": "passed",
+              "stage": "finished",
+              "steps": [],
+              "attachments": [
+                {
+                  "name": "Request",
+                  "source": "5f280efb-1ef3-4dbd-ab00-7e0544c7e48a-attachment.html",
+                  "type": "text/html",
+                  "labels": []
+                },
+                {
+                  "name": "HTTP/1.1 200 OK",
+                  "source": "a9bbb772-d4bd-4736-b99c-dc0b889d4360-attachment.html",
+                  "type": "text/html",
+                  "labels": []
+                }
+              ],
+              "parameters": [
+                {
+                  "name": "credentials",
+                  "value": "{firstName=Алексей, password=pass786552cb5b, login=courier786552cb5b}",
+                  "labels": []
+                }
+              ],
+              "start": 1792519721237,
+              "stop": 1792519721494,
+              "labels": []
+            }
+          ],
+          "attachments": [
+            {
+              "name": "Request",
+              "source": "3361ddbb-093e-43b6-9299-fa7fa57e4666-attachment.html",
+              "type": "text/html",
+              "labels": []
+            },
+            {
+              "name": "HTTP/1.1 200 OK",
+              "source": "0153c041-d75b-4b0a-9a48-1a8eaac01758-attachment.html",
+              "type": "text/html",
+              "labels": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "courier",
+              "value": "ru.yandex.praktikum.data.CourierData@38821ada",
+              "labels": []
+            }
+          ],
+          "start": 1792519721237,
+          "stop": 1792519721719,
+          "labels": []
+        }
+      ],
+      "attachments": [],
+      "parameters": [],
+      "start": 1792519721237,
+      "stop": 1792519721719,
+      "labels": []
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1792519720518,
+  "stop": 1792519721719
+}

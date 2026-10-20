@@ -1,0 +1,160 @@
+{
+  "uuid": "b29eb181-8371-4430-ab8a-d6a267c97e18",
+  "historyId": "415e427b465110f87c3aca9b53506a7d",
+  "fullName": "ru.yandex.praktikum.tests.CourierCreateTest.shouldReturnErrorWhenLoginIsMissing",
+  "labels": [
+    {
+      "name": "package",
+      "value": "ru.yandex.praktikum.tests",
+      "labels": []
+    },
+    {
+      "name": "testClass",
+      "value": "ru.yandex.praktikum.tests.CourierCreateTest",
+      "labels": []
+    },
+    {
+      "name": "testMethod",
+      "value": "shouldReturnErrorWhenLoginIsMissing",
+      "labels": []
+    },
+    {
+      "name": "suite",
+      "value": "ru.yandex.praktikum.tests.CourierCreateTest",
+      "labels": []
+    },
+    {
+      "name": "framework",
+      "value": "junit4",
+      "labels": []
+    },
+    {
+      "name": "language",
+      "value": "java",
+      "labels": []
+    }
+  ],
+  "links": [],
+  "name": "shouldReturnErrorWhenLoginIsMissing",
+  "status": "passed",
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "Подготовить данные курьера",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1792519726018,
+      "stop": 1792519726018,
+      "labels": []
+    },
+    {
+      "name": "Не создавать курьера без логина",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [
+        {
+          "name": "Создать курьера",
+          "status": "passed",
+          "stage": "finished",
+          "steps": [],
+          "attachments": [
+            {
+              "name": "Request",
+              "source": "ba715fc0-0619-44ce-8e49-73d79a177639-attachment.html",
+              "type": "text/html",
+              "labels": []
+            },
+            {
+              "name": "HTTP/1.1 400 Bad Request",
+              "source": "a14cd03f-23d6-41c9-ab9a-e609479fdf41-attachment.html",
+              "type": "text/html",
+              "labels": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "courier",
+              "value": "{firstName=Алексей, password=[скрыто]}",
+              "labels": []
+            }
+          ],
+          "start": 1792519726018,
+          "stop": 1792519726179,
+          "labels": []
+        }
+      ],
+      "attachments": [],
+      "parameters": [],
+      "start": 1792519726018,
+      "stop": 1792519726210,
+      "labels": []
+    },
+    {
+      "name": "Удалить созданного в тесте курьера",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [
+        {
+          "name": "Удалить курьера, если он был создан",
+          "status": "passed",
+          "stage": "finished",
+          "steps": [
+            {
+              "name": "Войти в систему под курьером",
+              "status": "passed",
+              "stage": "finished",
+              "steps": [],
+              "attachments": [
+                {
+                  "name": "Request",
+                  "source": "799ad454-4101-488a-904f-7074525aa28b-attachment.html",
+                  "type": "text/html",
+                  "labels": []
+                },
+                {
+                  "name": "HTTP/1.1 404 Not Found",
+                  "source": "8a715212-8de0-4c6c-aa8a-376a828615d8-attachment.html",
+                  "type": "text/html",
+                  "labels": []
+                }
+              ],
+              "parameters": [
+                {
+                  "name": "credentials",
+                  "value": "{firstName=Алексей, password=passa21a76d62d, login=couriera21a76d62d}",
+                  "labels": []
+                }
+              ],
+              "start": 1792519726211,
+              "stop": 1792519726540,
+              "labels": []
+            }
+          ],
+          "attachments": [],
+          "parameters": [
+            {
+              "name": "courier",
+              "value": "ru.yandex.praktikum.data.CourierData@80f3111",
+              "labels": []
+            }
+          ],
+          "start": 1792519726211,
+          "stop": 1792519726540,
+          "labels": []
+        }
+      ],
+      "attachments": [],
+      "parameters": [],
+      "start": 1792519726211,
+      "stop": 1792519726540,
+      "labels": []
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1792519726017,
+  "stop": 1792519726540
+}
