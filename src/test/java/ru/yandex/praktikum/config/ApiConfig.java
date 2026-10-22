@@ -7,6 +7,4 @@ public final class ApiConfig {
     public static final String ORDERS_PATH = "/api/v1/orders";
     public static final String ORDERS_CANCEL_PATH = ORDERS_PATH + "/cancel";
 
-    private ApiConfig() {
-    }
 }

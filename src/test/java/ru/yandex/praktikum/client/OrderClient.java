@@ -1,18 +1,20 @@
 package ru.yandex.praktikum.client;
 
 import io.qameta.allure.Step;
+import com.google.gson.Gson;
 import io.restassured.response.Response;
 import ru.yandex.praktikum.config.ApiConfig;
-
-import java.util.Map;
+import ru.yandex.praktikum.data.OrderModel;
 
 public final class OrderClient {
+    private static final Gson GSON = new Gson();
+
     private OrderClient() {
     }
 
     @Step("Создать заказ")
-    public static Response createOrder(Map<String, Object> order) {
-        return ApiClient.request().body(order).post(ApiConfig.ORDERS_PATH);
+    public static Response createOrder(OrderModel order) {
+        return ApiClient.request().body(GSON.toJson(order)).post(ApiConfig.ORDERS_PATH);
     }
 
     @Step("Отменить заказ по треку {track}")

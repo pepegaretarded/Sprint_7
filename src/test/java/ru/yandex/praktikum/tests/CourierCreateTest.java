@@ -1,21 +1,24 @@
 package ru.yandex.praktikum.tests;
 
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.praktikum.client.CourierClient;
 import ru.yandex.praktikum.data.CourierData;
-
-import java.util.HashMap;
-import java.util.Map;
+import ru.yandex.praktikum.data.CourierModel;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
+import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
+import static org.apache.http.HttpStatus.SC_CONFLICT;
+import static org.apache.http.HttpStatus.SC_CREATED;
 
 public class CourierCreateTest {
-    private CourierData courier;
+    private CourierModel courier;
 
     @Before
     @Step("Подготовить данные курьера")
@@ -30,46 +33,48 @@ public class CourierCreateTest {
     }
 
     @Test
-    @Step("Создать курьера с обязательными полями")
+    @DisplayName("Создать курьера с обязательными полями")
+    @Description("Проверить создание курьера с логином, паролем и именем")
     public void shouldCreateCourier() {
-        Response response = CourierClient.createCourier(courier.toMap());
+        Response response = CourierClient.createCourier(courier);
 
-        assertEquals(201, response.statusCode());
+        assertEquals(SC_CREATED, response.statusCode());
         response.then().body("ok", equalTo(true));
     }
 
     @Test
-    @Step("Не создавать двух курьеров с одинаковым логином")
+    @DisplayName("Не создавать двух курьеров с одинаковым логином")
+    @Description("Проверить ошибку при повторном создании курьера с тем же логином")
     public void shouldNotCreateCourierWithExistingLogin() {
-        Response firstResponse = CourierClient.createCourier(courier.toMap());
-        assertEquals(201, firstResponse.statusCode());
+        Response firstResponse = CourierClient.createCourier(courier);
+        assertEquals(SC_CREATED, firstResponse.statusCode());
 
-        Response duplicateResponse = CourierClient.createCourier(courier.toMap());
-        assertEquals(409, duplicateResponse.statusCode());
+        Response duplicateResponse = CourierClient.createCourier(courier);
+        assertEquals(SC_CONFLICT, duplicateResponse.statusCode());
         duplicateResponse.then().body("message", equalTo("Этот логин уже используется. Попробуйте другой."));
     }
 
     @Test
-    @Step("Не создавать курьера без логина")
+    @DisplayName("Не создавать курьера без логина")
+    @Description("Проверить ошибку, если при создании курьера не передан логин")
     public void shouldReturnErrorWhenLoginIsMissing() {
-        Map<String, Object> courierWithoutLogin = new HashMap<>(courier.toMap());
-        courierWithoutLogin.remove("login");
+        CourierModel courierWithoutLogin = new CourierModel(null, courier.getPassword(), courier.getFirstName());
 
         Response response = CourierClient.createCourier(courierWithoutLogin);
 
-        assertEquals(400, response.statusCode());
+        assertEquals(SC_BAD_REQUEST, response.statusCode());
         response.then().body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
 
     @Test
-    @Step("Не создавать курьера без пароля")
+    @DisplayName("Не создавать курьера без пароля")
+    @Description("Проверить ошибку, если при создании курьера не передан пароль")
     public void shouldReturnErrorWhenPasswordIsMissing() {
-        Map<String, Object> courierWithoutPassword = new HashMap<>(courier.toMap());
-        courierWithoutPassword.remove("password");
+        CourierModel courierWithoutPassword = new CourierModel(courier.getLogin(), null, courier.getFirstName());
 
         Response response = CourierClient.createCourier(courierWithoutPassword);
 
-        assertEquals(400, response.statusCode());
+        assertEquals(SC_BAD_REQUEST, response.statusCode());
         response.then().body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
 }
